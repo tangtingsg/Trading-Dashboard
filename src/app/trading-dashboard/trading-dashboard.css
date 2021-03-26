@@ -1,0 +1,30 @@
+.toolbar {
+  height: 55px;
+  padding: 0 56px;
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-logo {
+  margin: 0;
+  width: 136px;
+}
+
+.icon-select {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+
+.arrow-down {
+  box-sizing: border-box;
+  margin: 0px 5px;
+  min-width: 0px;
+  color: rgb(132, 142, 156);
+  font-size: 18px;
+  fill: rgb(132, 142, 156);
+  width: 1em;
+  height: 1em;
+}
