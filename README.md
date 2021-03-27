@@ -1,4 +1,4 @@
-# Angular
+# Trading Dahsboard
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
 
 
@@ -14,7 +14,7 @@ Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:42
 # Description
 This is a mock real-time crypto trading dashboard and contains contains 6 widgets:
 - overview widge: yesterday high/low/close price and current price
-- candlestick widget: show history high/low/close price
+- candlestick widget: show historical high/low/close price
 - position widget: postion and pnl
 - order entry widget: place order
 - order book widget: real-time all placed orders
