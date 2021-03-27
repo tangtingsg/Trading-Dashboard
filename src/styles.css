@@ -9,7 +9,7 @@ html, body, h1, h2, h3, p, span, input, textarea, button {
   font-style: normal;
   color: #f4f4f4;
 }
-
+table { width: 100%; }
 .sell, .red { color: rgb(248, 73, 96) }
 .buy, .green { color: rgb(2, 192, 118) }
 

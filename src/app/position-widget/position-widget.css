@@ -1,0 +1,31 @@
+.position {
+  background-color: #0b1729e8;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+tr { height: 20px; }
+td { padding: 5px; }
+th {
+  text-align: left;
+  font-weight: 600;
+  color: #739c9c
+}
+
+.name { width: 10% }
+.right {
+  width: 30%;
+  text-align: right;
+}
+
+.small-info {
+  font-size: 12px;
+  color: rgb(132, 142, 156);
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.small-info.red { color: rgb(248, 73, 96) }
+.small-info.green { color: rgb(2, 192, 118) }
+

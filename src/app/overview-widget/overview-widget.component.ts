@@ -32,7 +32,6 @@ export class OverviewWidgetComponent implements OnInit, OnDestroy {
     if (ytdData) {
       this.overviewModel.updateYtdData(ytdData);
     }
-
   }
 
   private subscribeBboPriceData(): void {

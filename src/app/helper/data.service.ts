@@ -30,6 +30,7 @@ export class DataService {
   private generateBboPriceData(): void {
     setInterval(() => {
       this.bboPriceData.emit({
+        symbol: 'BTC',
         side: this.ramdomZeroOrOne(),
         price: this.getRandomArbitrary(54000, 56000),
       });

@@ -1,0 +1,26 @@
+
+<div class="position">
+  <table>
+    <tr>
+      <th class="name">Symbol</th>
+      <th class="right">Pos/Mkt Val</th>
+      <th class="right">Current/Cost</th>
+      <th class="right">PNL</th>
+    </tr>
+    <tr *ngFor="let model of positionModels">
+      <td class="name">{{model.symbol}}</td>
+      <td class="right">
+        <div>{{model.qty}}</div>
+        <div class="small-info">{{model.mktValue}}</div>
+      </td>
+      <td class="right">
+        <div>{{model.price}}</div>
+        <div class="small-info">{{model.costDisplay}}</div>
+      </td>
+      <td class="right {{model.css}}">
+        <div>{{model.pnl}}</div>
+        <div class="small-info {{model.css}}">{{model.pnlPencentage}}%</div>
+      </td>
+    </tr>
+  </table>
+</div>

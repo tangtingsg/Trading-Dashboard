@@ -8,6 +8,7 @@ import { OrderWidgetComponent } from './order-widget/order-widget.component';
 import { OrderbookWidgetComponent } from './orderbook-widget/orderbook-widget.component';
 import { OverviewWidgetComponent } from './overview-widget/overview-widget.component';
 import { TradeWidgetComponent } from './trade-widget/trade-widget.component';
+import { PositionWidgetComponent } from './position-widget/position.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TradeWidgetComponent } from './trade-widget/trade-widget.component';
     OrderWidgetComponent,
     OrderbookWidgetComponent,
     OverviewWidgetComponent,
-    TradeWidgetComponent
+    TradeWidgetComponent,
+    PositionWidgetComponent
   ],
   imports: [
     BrowserModule,
