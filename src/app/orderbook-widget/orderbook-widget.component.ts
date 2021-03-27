@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { DataService } from '../helper/data.service';
 import { OrderbookModel } from './orderbook.model';
 
@@ -9,7 +9,8 @@ import { OrderbookModel } from './orderbook.model';
   providers: [ DataService ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class OrderbookWidgetComponent implements OnInit, OnDestroy {
+export class OrderbookWidgetComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() symbol: any;
   buyOrderbooks: Array<OrderbookModel> = [];
   sellOrderbooks: Array<OrderbookModel> = [];
   lastModel: OrderbookModel|null = null;
@@ -20,14 +21,30 @@ export class OrderbookWidgetComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit(): void {
-    this.dataService.subscribeOrderBookData();
-    this.dataService.orderbookData.subscribe(orderbook => {
-      this.updateOrderbook(orderbook);
-    });
+    this.initData();
   }
 
   ngOnDestroy(): void {
     this.dataService.orderbookData.unsubscribe();
+  }
+
+  ngOnChanges(change: SimpleChanges): void {
+    if (change.symbol) {
+      this.symbol = change.symbol.currentValue;
+      this.cdRef.detectChanges();
+    }
+  }
+
+  async initData(): Promise<any> {
+    const orderbookSnapshot = await this.dataService.subscribeAndRquOrderBookData();
+    for (const orderbook of orderbookSnapshot) {
+      this.updateOrderbook(orderbook);
+    }
+    this.dataService.orderbookData.subscribe(orderbook => {
+      this.updateOrderbook(orderbook);
+      this.cdRef.detectChanges();
+    });
+    this.cdRef.detectChanges();
   }
 
   private updateOrderbook(orderbook: object): void {
@@ -45,6 +62,5 @@ export class OrderbookWidgetComponent implements OnInit, OnDestroy {
       default:
         break;
     }
-    this.cdRef.detectChanges();
   }
 }

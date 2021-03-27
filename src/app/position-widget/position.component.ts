@@ -19,7 +19,6 @@ export class PositionWidgetComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit(): void {
-    console.log(this)
     this.initPositions();
     this.dataService.subscribeBboPriceData();
     this.dataService.bboPriceData.subscribe(bbo => {

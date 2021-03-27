@@ -3,23 +3,32 @@
     <img src="../assets/crypto-logo-white.webp" class="toolbar-logo">
   </div>
   <div class="icon-select">
-    <h2>BTC</h2>
-    <svg viewBox="0 0 24 24" fill="t.grey300" class="arrow-down">
-      <path d="M16 9v2l-4 4.24L8 11V9h8z" fill="t.grey300"></path>
-    </svg>
+    <select [(ngModel)]="selectedSymbolName" (ngModelChange)="symbolListChange($event)">
+      <option *ngFor="let ele of symbolList"
+        selected="selectedSymbolName === ele.symbol"
+        value="{{ele.symbol}}">
+        {{ele.symbol}}
+      </option>
+    </select>
   </div>
 </div>
 
 <div class="top-panel">
-  <app-overview-widget></app-overview-widget>
+  <app-overview-widget
+    [symbol]="selectedSymbol">
+  </app-overview-widget>
 </div>
 <div class="panel">
   <div class="left-panel">
-    <app-orderbook-widget></app-orderbook-widget>
+    <app-orderbook-widget 
+    [symbol]="selectedSymbol">
+    </app-orderbook-widget>
   </div>
   <div class="middle-panel">
     <app-chart-widget></app-chart-widget>
-    <app-order-widget></app-order-widget>
+    <app-order-widget
+      [symbol]="selectedSymbol">
+    </app-order-widget>
     <app-position-widget></app-position-widget>
   </div>
   <div class="right-panel">

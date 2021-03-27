@@ -9,18 +9,27 @@ export class DataService {
 
   constructor() {}
 
-  subscribeOrderBookData(): void {
-    this.generateOrderBookData();
+  async subscribeAndRquOrderBookData(): Promise<any> {
+    this.publishOrderBookData();
+    const dataList = [];
+    for (let i = 0; i < 100; i++) {
+      dataList.push(this.getOrderBookData());
+    }
+    return dataList;
   }
 
-  private generateOrderBookData(): void {
+  private publishOrderBookData(): void {
     setInterval(() => {
-      this.orderbookData.emit({
-        side: this.ramdomZeroOrOne(),
-        price: this.getRandomArbitrary(54000, 56000),
-        amount: this.getRandomArbitrary(0, 2)
-      });
+      this.orderbookData.emit(this.getOrderBookData());
     }, 500);
+  }
+
+  private getOrderBookData(): object {
+    return {
+      side: this.ramdomZeroOrOne(),
+      price: this.getRandomArbitrary(54000, 56000),
+      amount: this.getRandomArbitrary(0, 2)
+    };
   }
 
   subscribeBboPriceData(): void {
@@ -37,19 +46,28 @@ export class DataService {
     }, 300);
   }
 
-  subscribeTradeData(): void {
-    this.generateTradeData();
+  async subscribeTradeData(): Promise<any> {
+    this.publishTradeData();
+    const dataList = [];
+    for (let i = 0; i < 100; i++) {
+      dataList.push(this.getTradeData());
+    }
+    return dataList;
   }
 
-  private generateTradeData(): void {
+  private publishTradeData(): void {
     setInterval(() => {
-      this.bboPriceData.emit({
-        side: this.ramdomZeroOrOne(),
+      this.bboPriceData.emit(this.getTradeData());
+    }, 300);
+  }
+
+  private getTradeData(): object {
+    return {
+      side: this.ramdomZeroOrOne(),
         amount: this.getRandomArbitrary(0, 2),
         price: this.getRandomArbitrary(54000, 56000),
         time: new Date().toTimeString().split(' ')[0]
-      });
-    }, 300);
+    };
   }
 
   private getRandomArbitrary(min: number, max: number): number {

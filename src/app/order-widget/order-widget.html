@@ -1,25 +1,25 @@
 <div class="order-form">
   <div class="order-content">
     <div class="order-content-box">
-      <div class="title">Buy BTC</div>
+      <div class="title">Buy {{symbol.symbol}}</div>
       <div class="input-box">
         <label>Price</label>
         <input class="input" type="number"
           [(ngModel)]="buyOrderModel.price"
           (ngModelChange)="buyOrderModel.onInputChange()" required>
-        <label>USDT</label>
+        <label>USD</label>
       </div>
       <div class="input-box">
         <label>Amount</label>
         <input class="input" type="number"
           [(ngModel)]="buyOrderModel.amount"
           (ngModelChange)="buyOrderModel.onInputChange()" required>
-        <label>BTC</label>
+        <label>{{symbol.symbol}}</label>
       </div>
       <div class="input-box">
         <label>Total</label>
         <span class="input-text">{{buyOrderModel.total}}</span>
-        <label>USDT</label>
+        <label>USD</label>
       </div>
       <div>
         <span>{{buyOrderModel.tips}}</span>
@@ -27,26 +27,26 @@
       </div>
     </div>
     <div class="order-content-box">
-      <div class="title">Sell BTC</div>
+      <div class="title">Sell {{symbol.symbol}}</div>
       <div class="input-box">
         <label>Price</label>
         <input class="input" type="number"
           [(ngModel)]="sellOrderModel.price"
           (ngModelChange)="sellOrderModel.onInputChange()"
           required>
-        <label>USDT</label>
+        <label>USD</label>
       </div>
       <div class="input-box">
         <label>Amount</label>
         <input class="input" type="number"
           [(ngModel)]="sellOrderModel.amount"
           (ngModelChange)="sellOrderModel.onInputChange()" required>
-        <label>BTC</label>
+        <label>{{symbol.symbol}}</label>
       </div>
       <div class="input-box">
         <label>Total</label>
         <span class="input-text">{{sellOrderModel.total}}</span>
-        <label>USDT</label>
+        <label>USD</label>
       </div>
       <div>
         <span>{{sellOrderModel.tips}}</span>

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DataService } from '../helper/data.service';
 import { OverviewModel } from './overview.model';
 
@@ -10,7 +10,8 @@ import { OverviewModel } from './overview.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class OverviewWidgetComponent implements OnInit, OnDestroy {
+export class OverviewWidgetComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() symbol: any;
   overviewModel: OverviewModel = new OverviewModel();
 
   constructor(
@@ -25,6 +26,13 @@ export class OverviewWidgetComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.dataService.bboPriceData.unsubscribe();
+  }
+
+  ngOnChanges(change: SimpleChanges): void {
+    if (change.symbol) {
+      this.symbol = change.symbol.currentValue;
+      this.cdRef.detectChanges();
+    }
   }
 
   private getYtdData(): void {

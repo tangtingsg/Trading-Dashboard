@@ -1,6 +1,12 @@
 .overview-widget {
   display: flex;
-  align-items: center
+  align-items: center;
+}
+
+.symbol-title {
+  font-size: 20px;
+  width: 50px;
+  font-weight: 700;
 }
 
 .title {

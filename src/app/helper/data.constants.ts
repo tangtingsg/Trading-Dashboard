@@ -1,5 +1,19 @@
-export const SymbolList = ['ADA', 'BCH', 'BTC', 'DOT', 'ETH',
-  'LTC', 'USDT'];
+
+export const SymbolList = [{
+    symbol: 'ADA'
+  }, {
+    symbol: 'BCH'
+  }, {
+    symbol: 'BTC'
+  }, {
+    symbol: 'DOT'
+  }, {
+    symbol: 'ETH'
+  }, {
+    symbol: 'LTC'
+  }, {
+    symbol: 'USDT'
+}];
 
 export const PositionList = [{
   symbol: 'BTC',

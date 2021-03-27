@@ -1,35 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../helper/data.service';
-import { CurrencyList } from './data';
+import { SymbolList } from '../helper/data.constants';
 
 @Component({
   selector: 'app-trading-dashboard',
   templateUrl: './trading-dashboard.html',
   styleUrls: ['./trading-dashboard.css'],
-  providers: [ DataService ],
-
 })
 export class TradingDashboardComponent implements OnInit {
-  currencyList = CurrencyList;
+  symbolList = SymbolList;
+  selectedSymbolName = 'BTC';
+  selectedSymbol = SymbolList.find(ele => ele.symbol === 'BTC');
   positionMap = new Map<string, any>();
   positionInfo = null;
 
-  constructor(
-    private dataService: DataService
-  ) {}
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-    this.initPositionMap();
-  }
-
-  private initPositionMap(): void {
-    const positionList = this.dataService.getPosotionList();
-    const positionMap = new Map<string, any>();
-    for (const position of positionList) {
-      positionMap.set(position.symbol, position);
-    }
-    this.positionMap = positionMap;
-    this.positionInfo = this.positionMap.get('BTC');
+  symbolListChange(symbol: any): void {
+    this.selectedSymbol = SymbolList.find(ele => ele.symbol === symbol);
+    console.log(symbol)
     console.log(this)
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnDestroy, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { OrderModel } from './order.model';
 
 @Component({
@@ -6,12 +6,19 @@ import { OrderModel } from './order.model';
   templateUrl: './order-widget.html',
   styleUrls: ['./order-widget.css'],
 })
-export class OrderWidgetComponent implements OnDestroy {
+export class OrderWidgetComponent implements OnDestroy, OnChanges {
+  @Input() symbol: any;
 
   buyOrderModel = new OrderModel();
   sellOrderModel = new OrderModel();
 
   constructor() {}
+
+  ngOnChanges(change: SimpleChanges): void {
+    if (change.symbol) {
+      this.symbol = change.symbol.currentValue;
+    }
+  }
 
   ngOnDestroy(): void {
     this.buyOrderModel.clearTimeout();
