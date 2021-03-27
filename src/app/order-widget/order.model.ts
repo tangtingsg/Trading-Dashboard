@@ -30,11 +30,11 @@ export class OrderModel {
   formateData(side: string): object|null {
     this.tips = '';
     if (!this.price) {
-      this.tips = 'Please input price';
+      this.tips = '*Please input price';
       return null;
     }
     if (!this.amount) {
-      this.tips = 'Please input amount';
+      this.tips = '*Please input amount';
       return null;
     }
     return {

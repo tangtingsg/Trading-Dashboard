@@ -14,7 +14,7 @@ export class DataService {
   tradeInterval: any;
 
   async subscribeAndReqChartData(): Promise<any> {
-    let date = '2008-03-01';
+    let date = '2020-01-01';
     const dataList = [];
     for (let i = 0; i < 300; i++) {
       date = this.getDate(date);

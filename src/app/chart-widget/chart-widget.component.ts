@@ -64,19 +64,11 @@ export class ChartWidgetComponent implements OnDestroy, AfterViewInit {
   }
 
   private async subscribeData(): Promise<any> {
-    this.clearData();
     this.dataArray = await this.dataService.subscribeAndReqChartData();
     this.lineSeries.setData(this.dataArray);
     this.dataService.chartData.subscribe(data => {
       this.dataArray.push(data);
       this.lineSeries.setData(this.dataArray);
     });
-  }
-
-  clearData(): void {
-    this.dataArray.length = 0;
-    if (this.lineSeries) {
-      this.lineSeries.setData([]);
-    }
   }
 }
