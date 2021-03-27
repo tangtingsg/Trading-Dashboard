@@ -28,3 +28,8 @@
   width: 1em;
   height: 1em;
 }
+
+.panel { display: flex; }
+.left-panel { width: 20% }
+.middle-panel { width: 60% }
+.right-panel { width: 20% }

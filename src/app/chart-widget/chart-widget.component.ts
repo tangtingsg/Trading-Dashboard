@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { createChart } from 'lightweight-charts';
 
 @Component({
@@ -7,20 +7,21 @@ import { createChart } from 'lightweight-charts';
   styleUrls: ['./chart-widget.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ChartWidgetComponent implements OnInit, OnDestroy {
+export class ChartWidgetComponent implements OnDestroy, AfterViewInit {
+  @ViewChild('chartWidget') chartWidget: ElementRef|null = null;
+
   lineSeries: any = null;
   dataArray: Array<any> = [];
-
   interval: any;
 
   constructor() {}
 
-  ngOnInit(): void {
-    this.initChart();
-  }
-
   ngOnDestroy(): void {
     this.clearInterval();
+  }
+
+  ngAfterViewInit(): void {
+    this.initChart();
   }
 
   private clearInterval(): void{
@@ -29,9 +30,12 @@ export class ChartWidgetComponent implements OnInit, OnDestroy {
   }
 
   private initChart(): void {
-    const chart = createChart(document.body, {
-      width: 600,
-      height: 300,
+    const nativeElement = this.chartWidget && this.chartWidget.nativeElement;
+    if (!nativeElement) {
+      return;
+    }
+    const chart = createChart(nativeElement, {
+      height: 500,
       layout: {
         backgroundColor: '#061121',
         textColor: 'rgba(255, 255, 255, 0.9)',
