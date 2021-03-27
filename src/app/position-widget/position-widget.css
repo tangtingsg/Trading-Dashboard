@@ -1,0 +1,13 @@
+.position-widget {
+  display: flex;
+  align-items: center
+}
+
+.title {
+  font-size: 30px;
+}
+
+.position-box {
+  width: 150px;
+  margin-left: 20px;
+}

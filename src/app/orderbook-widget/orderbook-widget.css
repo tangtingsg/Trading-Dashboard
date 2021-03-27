@@ -1,5 +1,5 @@
 .orderbook-table {
-  height: 430px;
+  height: 500px;
 }
 
 table { width: 100% }
@@ -17,6 +17,6 @@ table { width: 100% }
   font-weight: 500;
 }
 
-.order-cell {
-  padding: 2px;
+td {
+  padding: 3px;
 }

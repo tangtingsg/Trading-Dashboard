@@ -6,13 +6,15 @@ import { TradingDashboardComponent } from './trading-dashboard/trading-dashboard
 import { ChartWidgetComponent } from './chart-widget/chart-widget.component';
 import { OrderWidgetComponent } from './order-widget/order-widget.component';
 import { OrderbookWidgetComponent } from './orderbook-widget/orderbook-widget.component';
+import { PositionWidgetComponent } from './position-widget/position-widget.component';
 
 @NgModule({
   declarations: [
     TradingDashboardComponent,
     ChartWidgetComponent,
     OrderWidgetComponent,
-    OrderbookWidgetComponent
+    OrderbookWidgetComponent,
+    PositionWidgetComponent
   ],
   imports: [
     BrowserModule,

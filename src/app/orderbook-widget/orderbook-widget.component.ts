@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { DataService } from '../helper/data.service';
 import { OrderbookModel } from './orderbook.model';
-import { Headers } from './constants';
 
 @Component({
   selector: 'app-orderbook-widget',
@@ -14,8 +13,6 @@ export class OrderbookWidgetComponent implements OnInit, OnDestroy {
   buyOrderbooks: Array<OrderbookModel|any> = [];
   sellOrderbooks: Array<OrderbookModel|any> = [];
   lastModel: OrderbookModel|null = null;
-
-  headers = Headers;
 
   constructor(
     private dataService: DataService,
