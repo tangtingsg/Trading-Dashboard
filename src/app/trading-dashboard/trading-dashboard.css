@@ -1,5 +1,5 @@
 .toolbar {
-  height: 77px;
+  height: 50px;
   display: flex;
   align-items: center;
 }
@@ -12,12 +12,11 @@
 .panel {
   height: 60em;
   display: flex;
-  padding: 20px 0;
 }
 .left-panel { width: 20% }
-.middle-panel { width: 60% }
+.middle-panel {
+  width: 60%;
+  margin: 10px 10px;
+}
 .right-panel { width: 20% }
 
-.buttom-panel {
-  height: 20px;
-}

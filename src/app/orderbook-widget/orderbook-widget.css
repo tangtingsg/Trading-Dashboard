@@ -4,21 +4,20 @@
   overflow: auto;
 }
 
-table { width: 100% }
+table {
+  width: 100%;
+  font-size: 12px;
+}
 
 .title {
   font-size: 18px;
   font-weight: 700;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .header-title {
-  font-size: 20px;
   color: rgb(94, 102, 115);
   text-align: left;
-  font-weight: 500;
 }
 
-td {
-  padding: 3px;
-}
+td { padding: 2px; }

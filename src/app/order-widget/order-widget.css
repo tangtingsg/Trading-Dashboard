@@ -1,7 +1,8 @@
 .order-form {
   background-color: #0b1729e8;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 4px;
+  margin-top: 10px;
 }
 
 .order-content {
@@ -10,7 +11,6 @@
 }
 
 .title {
-  font-size: 16px;
   font-weight: 700;
   color: #739c9c
 }
@@ -21,8 +21,8 @@
 
 .input-box {
   background-color: #141f2d;
-  margin: 7px 0;
-  padding: 0 10px;
+  margin: 5px 0;
+  padding: 0 8px;
   display: inline-flex;
   height: 32px;
   align-items: center;

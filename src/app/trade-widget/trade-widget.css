@@ -1,5 +1,5 @@
 .trade {
-  padding: 0 10px;
+  padding-left: 20px;
   height: 100%;
 }
 
@@ -7,19 +7,20 @@
   height: 100%;
   overflow: auto;
 }
-table { width: 100% }
-td { padding: 3px; }
+table {
+  width: 100%;
+  font-size: 12px;
+}
+td { padding: 2px; }
 
 .title {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .header-title {
-  font-size: 16px;
   color: rgb(94, 102, 115);
   text-align: left;
-  font-weight: 500;
 }
 

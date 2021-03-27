@@ -31,6 +31,14 @@ export const PositionList = [{
   symbol: 'LTC',
   qty: 23843,
   cost: 35223.34,
+}, {
+  symbol: 'ETH',
+  qty: 2.234532,
+  cost: 3234.34,
+}, {
+  symbol: 'DOT',
+  qty: 18392.34,
+  cost: 43982.34,
 }];
 
 export const YtdData = [{
