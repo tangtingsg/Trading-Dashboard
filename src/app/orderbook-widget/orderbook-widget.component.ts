@@ -10,8 +10,8 @@ import { OrderbookModel } from './orderbook.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrderbookWidgetComponent implements OnInit, OnDestroy {
-  buyOrderbooks: Array<OrderbookModel|any> = [];
-  sellOrderbooks: Array<OrderbookModel|any> = [];
+  buyOrderbooks: Array<OrderbookModel> = [];
+  sellOrderbooks: Array<OrderbookModel> = [];
   lastModel: OrderbookModel|null = null;
 
   constructor(
@@ -20,6 +20,7 @@ export class OrderbookWidgetComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit(): void {
+    this.dataService.subscribeOrderBookData();
     this.dataService.orderbookData.subscribe(orderbook => {
       this.updateOrderbook(orderbook);
     });

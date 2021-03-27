@@ -18,7 +18,7 @@ export class PositionModel {
     this.position = `${positionInfo.position}%`;
   }
 
-  updateCurrentPrice(bboPrice: any): void {
+  updateBboPrice(bboPrice: any): void {
     if (!bboPrice) {
       return;
     }

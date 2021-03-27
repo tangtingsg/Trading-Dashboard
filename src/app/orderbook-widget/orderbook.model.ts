@@ -2,7 +2,6 @@ export class OrderbookModel {
   price: number|null = null;
   amount: number|null = null;
   total: string|null = null;
-  // 0 - Buy, 1 - Sell
   side: number|null = null;
   css = '';
 

@@ -1,0 +1,20 @@
+
+<div class="trade">
+  <div class="title">Market Trades</div>
+  <div class="trade-table">
+    <table>
+      <tr class="header-title">
+        <th>Price</th>
+        <th>Amount</th>
+        <th>Time</th>
+      </tr>
+      <tr *ngFor="let model of tradeModels">
+        <td class="{{model.css}}">{{model.price}}</td>
+        <td>{{model.amount}}</td>
+        <td>{{model.time}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+

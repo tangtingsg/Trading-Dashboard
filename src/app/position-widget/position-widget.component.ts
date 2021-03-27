@@ -22,13 +22,14 @@ export class PositionWidgetComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const positionModel = new PositionModel(this.positionInfo);
     this.positionModel = positionModel;
-    this.dataService.currentPriceData.subscribe(data => {
-      positionModel.updateCurrentPrice(data);
+    this.dataService.subscribeBboPriceData();
+    this.dataService.bboPriceData.subscribe(data => {
+      positionModel.updateBboPrice(data);
       this.cdRef.detectChanges();
     });
   }
 
   ngOnDestroy(): void {
-    this.dataService.currentPriceData.unsubscribe();
+    this.dataService.bboPriceData.unsubscribe();
   }
 }

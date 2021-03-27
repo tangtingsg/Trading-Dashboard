@@ -1,10 +1,10 @@
-.orderbook{ height: 100%;}
-.orderbook-table {
-  height: 45%;
+.trade { padding: 0 10px; }
+
+.trade-table {
   overflow: auto;
 }
-
 table { width: 100% }
+td { padding: 3px; }
 
 .title {
   font-size: 18px;
@@ -19,6 +19,3 @@ table { width: 100% }
   font-weight: 500;
 }
 
-td {
-  padding: 3px;
-}

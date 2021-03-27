@@ -4,11 +4,13 @@ import { PositionList } from './data.constants';
 @Injectable()
 export class DataService {
   orderbookData = new EventEmitter();
-  currentPriceData = new EventEmitter();
+  bboPriceData = new EventEmitter();
+  tradeData = new EventEmitter();
 
-  constructor() {
+  constructor() {}
+
+  subscribeOrderBookData(): void {
     this.generateOrderBookData();
-    this.generateCurrentPriceData();
   }
 
   private generateOrderBookData(): void {
@@ -21,11 +23,30 @@ export class DataService {
     }, 500);
   }
 
-  private generateCurrentPriceData(): void {
+  subscribeBboPriceData(): void {
+    this.generateBboPriceData();
+  }
+
+  private generateBboPriceData(): void {
     setInterval(() => {
-      this.currentPriceData.emit({
+      this.bboPriceData.emit({
         side: this.ramdomZeroOrOne(),
         price: this.getRandomArbitrary(54000, 56000),
+      });
+    }, 300);
+  }
+
+  subscribeTradeData(): void {
+    this.generateTradeData();
+  }
+
+  private generateTradeData(): void {
+    setInterval(() => {
+      this.bboPriceData.emit({
+        side: this.ramdomZeroOrOne(),
+        amount: this.getRandomArbitrary(0, 2),
+        price: this.getRandomArbitrary(54000, 56000),
+        time: new Date().toTimeString().split(' ')[0]
       });
     }, 300);
   }
@@ -41,6 +62,5 @@ export class DataService {
   getPosotionList(): Array<any> {
     return PositionList;
   }
-
 
 }
