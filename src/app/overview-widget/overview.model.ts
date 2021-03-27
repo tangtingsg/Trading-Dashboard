@@ -7,7 +7,7 @@ export class OverviewModel {
   low = '';
   volume = '';
   change = '';
-  changePercentage = '';
+  changePercentage = '0.00';
   css = {
     side: '',
     positive: ''
@@ -34,7 +34,9 @@ export class OverviewModel {
     this.css.side = bboPrice.side ? 'sell' : 'buy';
     const change = +this.price - +this.close;
     this.change = this.formateNumber(change);
-    this.changePercentage= (change / +this.close * 100).toFixed(2);
+    if (+this.close) {
+      this.changePercentage = (change / +this.close * 100).toFixed(2);
+    }
     this.css.positive = change > 0 ? 'green' : 'red';
   }
 }

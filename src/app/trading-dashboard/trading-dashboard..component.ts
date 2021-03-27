@@ -17,8 +17,6 @@ export class TradingDashboardComponent implements OnInit {
 
   symbolListChange(symbol: any): void {
     this.selectedSymbol = SymbolList.find(ele => ele.symbol === symbol);
-    console.log(symbol)
-    console.log(this)
   }
 
 }

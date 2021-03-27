@@ -1,32 +1,31 @@
-import { Component, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { createChart } from 'lightweight-charts';
+import { DataService } from '../helper/data.service';
 
 @Component({
   selector: 'app-chart-widget',
   templateUrl: './chart-widget.html',
   styleUrls: ['./chart-widget.css'],
+  providers: [ DataService ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartWidgetComponent implements OnDestroy, AfterViewInit {
   @ViewChild('chartWidget') chartWidget: ElementRef|null = null;
-
+  @Input() symbol: any;
   lineSeries: any = null;
   dataArray: Array<any> = [];
-  interval: any;
 
-  constructor() {}
+  constructor(
+    private dataService: DataService
+  ) {}
 
   ngOnDestroy(): void {
-    this.clearInterval();
+    this.dataService.clearChartInterval();
   }
 
   ngAfterViewInit(): void {
     this.initChart();
-  }
-
-  private clearInterval(): void{
-    clearInterval(this.interval);
-    this.interval = null;
+    this.subscribeData();
   }
 
   private initChart(): void {
@@ -62,44 +61,22 @@ export class ChartWidgetComponent implements OnDestroy, AfterViewInit {
         downColor: 'rgb(248, 73, 96)'
       }
     );
-
-    let date = '2008-03-01';
-    this.interval = setInterval(() => {
-      date = this.getDate(date);
-      if (!date) {
-        this.clearInterval();
-        return;
-      }
-      this.updateData(date);
-    }, 1000);
   }
 
-  private updateData(date: string): void {
-    this.dataArray.push(this.randomData(date));
+  private async subscribeData(): Promise<any> {
+    this.clearData();
+    this.dataArray = await this.dataService.subscribeAndReqChartData();
     this.lineSeries.setData(this.dataArray);
+    this.dataService.chartData.subscribe(data => {
+      this.dataArray.push(data);
+      this.lineSeries.setData(this.dataArray);
+    });
   }
 
-  private randomData(date: string): any {
-    return {
-      time: date,
-      open: this.getRandomArbitrary(100, 200),
-      high: this.getRandomArbitrary(150, 250),
-      low: this.getRandomArbitrary(50, 200),
-      close: this.getRandomArbitrary(100, 200),
-    };
-  }
-
-  private getDate(date: string): string {
-    const day = new Date(date);
-    const nextDay = new Date(date);
-    nextDay.setDate(day.getDate() + 1);
-    if (nextDay > new Date()) {
-      return '';
+  clearData(): void {
+    this.dataArray.length = 0;
+    if (this.lineSeries) {
+      this.lineSeries.setData([]);
     }
-    return `${nextDay.getFullYear()}-${nextDay.getMonth() + 1}-${nextDay.getDate()}`;
-  }
-
-  private getRandomArbitrary(min: number, max: number): number {
-    return +(Math.random() * (max - min) + min).toFixed(2);
   }
 }

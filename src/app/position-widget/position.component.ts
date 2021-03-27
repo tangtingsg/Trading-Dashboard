@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { DataService } from '../helper/data.service';
 import { PositionModel } from './position.model';
 
@@ -9,7 +9,7 @@ import { PositionModel } from './position.model';
   providers: [ DataService ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PositionWidgetComponent implements OnInit, OnDestroy {
+export class PositionWidgetComponent implements OnInit {
   positionModels: Array<PositionModel> = [];
   positionModelsMap = new Map<string, PositionModel>();
 
@@ -28,10 +28,6 @@ export class PositionWidgetComponent implements OnInit, OnDestroy {
         this.cdRef.detectChanges();
       }
     });
-  }
-
-  ngOnDestroy(): void {
-    this.dataService.orderbookData.unsubscribe();
   }
 
   initPositions(): void {

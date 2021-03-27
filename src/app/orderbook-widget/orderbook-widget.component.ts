@@ -25,17 +25,25 @@ export class OrderbookWidgetComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnDestroy(): void {
-    this.dataService.orderbookData.unsubscribe();
+    this.dataService.clearOrderbookInterval();
   }
 
   ngOnChanges(change: SimpleChanges): void {
     if (change.symbol) {
       this.symbol = change.symbol.currentValue;
-      this.cdRef.detectChanges();
+      this.initData();
     }
   }
 
+  private clear(): void {
+    this.buyOrderbooks.length = 0;
+    this.sellOrderbooks.length = 0;
+    this.lastModel = null;
+    this.cdRef.detectChanges();
+  }
+
   async initData(): Promise<any> {
+    this.clear();
     const orderbookSnapshot = await this.dataService.subscribeAndRquOrderBookData();
     for (const orderbook of orderbookSnapshot) {
       this.updateOrderbook(orderbook);

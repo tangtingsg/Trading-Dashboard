@@ -20,23 +20,29 @@ export class OverviewWidgetComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnInit(): void {
-    this.getYtdData();
-    this.subscribeBboPriceData();
+    this.initData();
   }
 
   ngOnDestroy(): void {
-    this.dataService.bboPriceData.unsubscribe();
+    this.dataService.clearBboInterval();
   }
 
   ngOnChanges(change: SimpleChanges): void {
     if (change.symbol) {
       this.symbol = change.symbol.currentValue;
+      this.initData();
       this.cdRef.detectChanges();
     }
   }
 
+  private initData(): void {
+    this.overviewModel = new OverviewModel();
+    this.getYtdData();
+    this.subscribeBboPriceData();
+  }
+
   private getYtdData(): void {
-    const ytdData = this.dataService.getYtdData('BTC');
+    const ytdData = this.dataService.getYtdData(this.symbol.symbol);
     if (ytdData) {
       this.overviewModel.updateYtdData(ytdData);
     }

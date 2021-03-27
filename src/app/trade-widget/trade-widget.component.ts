@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DataService } from '../helper/data.service';
 import { TradeModel } from './trade.model';
 
@@ -9,7 +9,9 @@ import { TradeModel } from './trade.model';
   providers: [ DataService ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TradeWidgetComponent implements OnInit, OnDestroy {
+export class TradeWidgetComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() symbol: any;
+
   tradeModels: Array<TradeModel> = [];
 
   constructor(
@@ -22,10 +24,23 @@ export class TradeWidgetComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.dataService.orderbookData.unsubscribe();
+    this.dataService.clearTradeInterval();
+  }
+
+  ngOnChanges(change: SimpleChanges): void {
+    if (change.symbol) {
+      this.symbol = change.symbol.currentValue;
+      this.initData();
+    }
+  }
+
+  private clear(): void {
+    this.tradeModels.length = 0;
+    this.cdRef.detectChanges();
   }
 
   async initData(): Promise<any> {
+    this.clear();
     const tradeSnapshot = await this.dataService.subscribeTradeData();
     for (const trade of tradeSnapshot) {
       this.updateTrade(trade);

@@ -13,26 +13,32 @@
   </div>
 </div>
 
-<div class="top-panel">
-  <app-overview-widget
-    [symbol]="selectedSymbol">
-  </app-overview-widget>
-</div>
-<div class="panel">
-  <div class="left-panel">
-    <app-orderbook-widget 
-    [symbol]="selectedSymbol">
-    </app-orderbook-widget>
-  </div>
-  <div class="middle-panel">
-    <app-chart-widget></app-chart-widget>
-    <app-order-widget
+<div >
+  <div class="top-panel">
+    <app-overview-widget
       [symbol]="selectedSymbol">
-    </app-order-widget>
-    <app-position-widget></app-position-widget>
+    </app-overview-widget>
   </div>
-  <div class="right-panel">
-    <app-trade-widget></app-trade-widget>
+  <div class="panel">
+    <div class="left-panel">
+      <app-orderbook-widget 
+        [symbol]="selectedSymbol">
+      </app-orderbook-widget>
+    </div>
+    <div class="middle-panel">
+      <app-chart-widget
+        [symbol]="selectedSymbol">
+      </app-chart-widget>
+      <app-order-widget
+        [symbol]="selectedSymbol">
+      </app-order-widget>
+      <app-position-widget></app-position-widget>
+    </div>
+    <div class="right-panel">
+      <app-trade-widget
+        [symbol]="selectedSymbol">
+      </app-trade-widget>
+    </div>
   </div>
+  <div class="buttom-panel"></div>
 </div>
-<div class="buttom-panel"></div>
