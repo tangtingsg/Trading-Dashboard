@@ -15,8 +15,7 @@ export class OrderWidgetComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.buyOrderModel.clearTimeout();
-    this.buyOrderModel.clearTimeout();
-
+    this.sellOrderModel.clearTimeout();
   }
 
   placeBuyOrder(): void {

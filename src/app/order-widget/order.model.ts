@@ -1,15 +1,15 @@
 export class OrderModel {
   price: number|null = null;
-  qty: number|null = null;
-  amount: string|null = null;
+  amount: number|null = null;
+  total: string|null = null;
 
   timeout: any;
   tips = '';
 
   onInputChange(): void {
-    const amount = this.price && this.qty ?
-      +this.price * +this.qty : null;
-    this.amount = amount?.toFixed(3) || null;
+    const amount = this.price && this.amount ?
+      +this.price * +this.amount : null;
+    this.total = amount?.toFixed(3) || null;
   }
 
   placeOrder(side: string): void {
@@ -17,7 +17,7 @@ export class OrderModel {
     if (!data) {
       return;
     }
-    this.tips = `Sucessful ${side} ${this.qty} at ${this.price} price`;
+    this.tips = `Sucessful ${side} ${this.amount} at ${this.price} price`;
     this.timeout = setTimeout(() => {
       this.tips = '';
     }, 6000);
@@ -33,14 +33,14 @@ export class OrderModel {
       this.tips = 'Please input price';
       return null;
     }
-    if (!this.qty) {
-      this.tips = 'Please input qty';
+    if (!this.amount) {
+      this.tips = 'Please input amount';
       return null;
     }
     return {
       side,
       price: this.price,
-      qty: this.qty
+      amount: this.amount
     };
   }
 }

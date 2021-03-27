@@ -29,7 +29,10 @@
   height: 1em;
 }
 
-.panel { display: flex; }
+.panel {
+  display: flex;
+  padding: 20px;
+}
 .left-panel { width: 20% }
 .middle-panel { width: 60% }
 .right-panel { width: 20% }

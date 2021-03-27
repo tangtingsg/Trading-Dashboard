@@ -10,7 +10,7 @@ html, body, h1, h2, h3, p, span, input, textarea, button {
   color: #f4f4f4;
 }
 
-.ask { color: rgb(248, 73, 96) }
+.sell { color: rgb(248, 73, 96) }
 .buy { color: rgb(2, 192, 118) }
 
 input {

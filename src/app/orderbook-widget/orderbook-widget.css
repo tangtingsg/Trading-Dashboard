@@ -1,0 +1,22 @@
+.orderbook-table {
+  height: 430px;
+}
+
+table { width: 100% }
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.header-title {
+  font-size: 16px;
+  color: rgb(94, 102, 115);
+  text-align: left;
+  font-weight: 500;
+}
+
+.order-cell {
+  padding: 2px;
+}

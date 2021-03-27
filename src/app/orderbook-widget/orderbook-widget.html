@@ -1,0 +1,27 @@
+
+<div class="orderbook-table">
+  <table>
+    <tr>
+      <th *ngFor="let header of headers" class="header-title">
+        {{header.name}}
+      </th>
+    </tr>
+    <tr *ngFor="let model of buyOrderbooks" class="buy">
+      <td *ngFor="let header of headers" class="order-cell">
+        {{model[header.field]}}
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="{{lastModel?.css}} title">{{lastModel?.price}}</div>
+<div class="orderbook-table">
+  <table>
+    <tr *ngFor="let model of sellOrderbooks" class="sell">
+      <td *ngFor="let header of headers"  class="order-cell">
+        {{model && model[header.field]}}
+      </td>
+    </tr>
+  </table>
+</div>
+
