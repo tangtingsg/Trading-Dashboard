@@ -34,7 +34,7 @@ export class ChartWidgetComponent implements OnDestroy, AfterViewInit {
       return;
     }
     const chart = createChart(nativeElement, {
-      height: 300,
+      height: 250,
       layout: {
         backgroundColor: '#061121',
         textColor: 'rgba(255, 255, 255, 0.9)',
