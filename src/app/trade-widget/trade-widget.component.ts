@@ -31,7 +31,7 @@ export class TradeWidgetComponent implements OnInit, OnDestroy {
   private updateTrade(trade: object): void {
     const tradeModel = new TradeModel(trade);
     this.tradeModels.unshift(tradeModel);
-    this.tradeModels.length = Math.min(this.tradeModels.length, 40);
+    this.tradeModels.length = Math.min(this.tradeModels.length, 60);
     this.cdRef.detectChanges();
   }
 }

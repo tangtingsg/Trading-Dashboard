@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { PositionList } from './data.constants';
+import { PositionList, YtdData } from './data.constants';
 
 @Injectable()
 export class DataService {
@@ -61,6 +61,10 @@ export class DataService {
 
   getPosotionList(): Array<any> {
     return PositionList;
+  }
+
+  getYtdData(symbol: string): any {
+    return YtdData.find(data => data.symbol === symbol);
   }
 
 }

@@ -1,0 +1,38 @@
+<div class="overview-widget">
+  <div class="overview-box">
+    <div class="{{overviewModel.css?.side}} title">
+      {{overviewModel.price}}
+    </div>
+  </div>
+  <div class="overview-box">
+    <div class="small-title">24h Change</div>
+    <div class="change-box">
+      <span class="{{overviewModel.css.positive}} change">{{overviewModel.change}}</span>
+      <span class="{{overviewModel.css.positive}}">{{overviewModel.changePercentage}}%</span>
+    </div>
+  </div>
+  <div class="overview-box">
+    <div class="small-title">24h Close</div>
+    <div>
+      {{overviewModel.closeDisplay}}
+    </div>
+  </div>
+  <div class="overview-box">
+    <div class="small-title">24h High</div>
+    <div>
+      {{overviewModel.high}}
+    </div>
+  </div>
+  <div class="overview-box">
+    <div class="small-title">24h Low</div>
+    <div>
+      {{overviewModel.low}}
+    </div>
+  </div>
+  <div class="overview-box">
+    <div class="small-title">24h Volume</div>
+    <div>
+      {{overviewModel.volume}}
+    </div>
+  </div>
+</div>

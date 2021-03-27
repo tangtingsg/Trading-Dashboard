@@ -36,11 +36,11 @@ export class OrderbookWidgetComponent implements OnInit, OnDestroy {
     switch (orderbookModel.side) {
       case 0:
         this.buyOrderbooks.unshift(orderbookModel);
-        this.buyOrderbooks.length = Math.min(this.buyOrderbooks.length, 20);
+        this.buyOrderbooks.length = Math.min(this.buyOrderbooks.length, 30);
         break;
       case 1:
         this.sellOrderbooks.unshift(orderbookModel);
-        this.sellOrderbooks.length = Math.min(this.sellOrderbooks.length, 20);
+        this.sellOrderbooks.length = Math.min(this.sellOrderbooks.length, 30);
         break;
       default:
         break;

@@ -1,6 +1,10 @@
-.trade { padding: 0 10px; }
+.trade {
+  padding: 0 10px;
+  height: 100%;
+}
 
 .trade-table {
+  height: 100%;
   overflow: auto;
 }
 table { width: 100% }

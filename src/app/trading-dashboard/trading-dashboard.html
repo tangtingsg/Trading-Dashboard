@@ -3,7 +3,7 @@
     <img src="../assets/crypto-logo-white.webp" class="toolbar-logo">
   </div>
   <div class="icon-select">
-    <h1>BTC</h1>
+    <h2>BTC</h2>
     <svg viewBox="0 0 24 24" fill="t.grey300" class="arrow-down">
       <path d="M16 9v2l-4 4.24L8 11V9h8z" fill="t.grey300"></path>
     </svg>
@@ -11,9 +11,7 @@
 </div>
 
 <div class="top-panel">
-  <app-position-widget
-   [positionInfo]="positionInfo">
-  </app-position-widget>
+  <app-overview-widget></app-overview-widget>
 </div>
 <div class="panel">
   <div class="left-panel">
@@ -27,3 +25,4 @@
     <app-trade-widget></app-trade-widget>
   </div>
 </div>
+<div class="buttom-panel"></div>

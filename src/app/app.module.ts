@@ -6,7 +6,7 @@ import { TradingDashboardComponent } from './trading-dashboard/trading-dashboard
 import { ChartWidgetComponent } from './chart-widget/chart-widget.component';
 import { OrderWidgetComponent } from './order-widget/order-widget.component';
 import { OrderbookWidgetComponent } from './orderbook-widget/orderbook-widget.component';
-import { PositionWidgetComponent } from './position-widget/position-widget.component';
+import { OverviewWidgetComponent } from './overview-widget/overview-widget.component';
 import { TradeWidgetComponent } from './trade-widget/trade-widget.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { TradeWidgetComponent } from './trade-widget/trade-widget.component';
     ChartWidgetComponent,
     OrderWidgetComponent,
     OrderbookWidgetComponent,
-    PositionWidgetComponent,
+    OverviewWidgetComponent,
     TradeWidgetComponent
   ],
   imports: [
