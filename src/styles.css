@@ -58,3 +58,7 @@ select {
   font-weight: 600;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
