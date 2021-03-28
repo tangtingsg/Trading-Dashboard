@@ -20,4 +20,5 @@ This is a mock real-time crypto trading dashboard and contains contains 6 widget
 - order book widget: real-time all placed orders
 - trade widget: real-time market traded orders
 
+Demo: https://tangtingsg.github.io/trading-dashboard/
 ![Alt text](trading-dashboard.png)
